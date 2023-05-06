@@ -1,8 +1,8 @@
 package gee
 
 import (
-	"fmt"
 	"net/http"
+	"log"
 )
 
 type HandlerFunc func(*Context)
@@ -32,7 +32,7 @@ func (engine *Engine) Run(addr string)(err error) {
 	return http.ListenAndServe(addr,engine)
 }
 
-func (engine *Engine) ServerHTTP(w http.ResponseWriter,req *http.Request) {
+func (engine *Engine) ServeHTTP(w http.ResponseWriter,req *http.Request) {
 	c := newContext(w,req)
 	engine.router.handle(c)
 }

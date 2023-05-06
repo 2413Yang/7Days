@@ -37,7 +37,7 @@ func (c *Context) Query(key string) string {
 
 func (c *Context) Status(code int) {
 	c.StatusCode = code
-	c.Writer.WriterHeader(code)
+	c.Writer.WriteHeader(code)
 }
 
 func (c *Context) SetHeader(key string,value string) {
